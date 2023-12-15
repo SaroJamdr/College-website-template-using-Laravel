@@ -24,7 +24,8 @@ class AdminController extends Controller
         }
     }
 
-    public function logout(){
+    public function logout(Request $request){
+        auth()->logout();
         return redirect()->route('admin.login');
     }
 
@@ -43,6 +44,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $admin = new Admin();
+        
         $imageName = time() . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $imageName);
         $admin->image = $imageName;

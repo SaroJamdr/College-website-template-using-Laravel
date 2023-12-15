@@ -44,7 +44,7 @@ Route::prefix('/admin')->group(function(){
         //content controller
         Route::get('/slider/list',[SliderController::class,'index'])->name('list.slider');
         Route::post('/slider/store',[SliderController::class,'store'])->name('store.slider');
-        Route::patch('/admin/edit/{admin}',[SliderController::class,'edit'])->name('edit.slider');
+        Route::patch('/slider/edit/{slide}',[SliderController::class,'edit'])->name('edit.slider');
         Route::get('/slider/delete',[SliderController::class,'delete'])->name('delete.slider');
 
         

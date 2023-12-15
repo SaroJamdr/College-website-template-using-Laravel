@@ -8,9 +8,6 @@
   <div class="col-6">
     <div class="text-right pt-3">
 
-
-
-
       <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-circle"></i>
        Add users
@@ -138,32 +135,36 @@
                 </div>
                 <div class="modal-body">
   
-                    {{Form::open(['route' => 'edit.slider' ,'method'=>'Post','enctype'=>'multipart/form-data']) }} 
-                
+                    {{-- {{Form::open(['route' => 'edit.slider' ,'method'=>'Post','enctype'=>'multipart/form-data']) }}  --}}
+                 <form action="{{route('edit.slider',$slider->id)}}" method="patch" enctype="multipart/form-data">
+                  @csrf
+                  {{-- {{Form::open(['route' => ['edit.slider', $slider->slide],'method'=>'PATCH','enctype'=>'multipart/form-data'])}} --}}
+                  
+                  
                     <div class="form-floating">
-                      <input type="file" name="image" class="form-control my-2"  value="{{old_image}}">
+                      <input type="file" name="image" class="form-control my-2"  value="{{old('image')}}">
                       <label for="image">Image</label>
                     </div>
                     <div class="form-floating">
-                        <input type="text" name="h1" class="form-control my-2" id="floatingPassword" value="old_h1">
+                        <input type="text" name="h1" class="form-control my-2" id="floatingPassword" value="{{old('h1')}}">
                         <label for="h1" >Heading 1</label>
                     </div>
                   
                     <div class="form-floating">
-                        <input type="text" name="h2" class="form-control my-2" id="floatingPassword" value="old_h2">
+                        <input type="text" name="h2" class="form-control my-2" id="floatingPassword" value="{{old('h2')}}">
                         <label for="h1" >Heading 2</label>
                     </div>
                   
                     <div class="form-floating">
-                        <input type="text" name="h3" class="form-control my-2" id="floatingPassword" value="old_h3">
+                        <input type="text" name="h3" class="form-control my-2" id="floatingPassword" value="{{old('h3')}}">
                         <label for="h1" >Heading 3</label>
                     </div>
                   
                     <div class="modal-footer">
                           <button type="submit" class="btn btn-primary btn-sm" data-bs-dismiss="modal">Submit</button>
                     </div>
-                {!! Form::close() !!}
-                    
+                {{-- {!! Form::close() !!} --}}
+                  </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
